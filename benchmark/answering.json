@@ -1,0 +1,114 @@
+[
+  {
+    "id": "a1_presentation_date",
+    "memories": [
+      {"title": "Mentor presentation on November 6, 2026", "event_type": "goal", "event_time": "2026-11-06", "summary": "The user will present the prototype to their mentor on November 6, 2026.", "participants": ["user", "mentor"], "facts": ["The prototype presentation to the mentor is on November 6, 2026."], "outcome": null}
+    ],
+    "question": "When is my mentor presentation?",
+    "answerable": true,
+    "required_keywords": ["november 6", "2026"],
+    "forbidden_keywords": [],
+    "expected_evidence": ["mentor"]
+  },
+  {
+    "id": "a2_format_preference",
+    "memories": [
+      {"title": "Communication preference: bullet points", "event_type": "preference", "event_time": "2026-10-01", "summary": "The user prefers concise bullet-point summaries.", "participants": ["user"], "facts": ["The user prefers concise bullet-point summaries."], "outcome": null}
+    ],
+    "question": "How do I like information formatted?",
+    "answerable": true,
+    "required_keywords": ["bullet"],
+    "forbidden_keywords": [],
+    "expected_evidence": ["bullet"]
+  },
+  {
+    "id": "a3_blocker_reason",
+    "memories": [
+      {"title": "Ravi's retrieval experiment blocked", "event_type": "project_update", "event_time": "2025-10-07", "summary": "Ravi's retrieval experiment is blocked because it used the chat model for embeddings instead of embeddinggemma.", "participants": ["Ravi"], "facts": ["Ravi's retrieval experiment is blocked.", "The test used the chat model for embeddings instead of embeddinggemma."], "outcome": null}
+    ],
+    "question": "Why was the retrieval experiment blocked?",
+    "answerable": true,
+    "required_keywords": ["chat model", "embeddinggemma"],
+    "forbidden_keywords": [],
+    "expected_evidence": ["ravi"]
+  },
+  {
+    "id": "a4_deletion_testing",
+    "memories": [
+      {"title": "Asha completed deletion tests", "event_type": "outcome", "event_time": "2025-10-07", "summary": "Asha completed the deletion tests on October 7, 2025.", "participants": ["Asha"], "facts": ["Asha completed the deletion tests on October 7, 2025."], "outcome": "Deletion tests completed."}
+    ],
+    "question": "Who completed deletion testing, and when?",
+    "answerable": true,
+    "required_keywords": ["asha", "october 7"],
+    "forbidden_keywords": [],
+    "expected_evidence": ["deletion"]
+  },
+  {
+    "id": "a5_missing_accuracy",
+    "memories": [
+      {"title": "No numerical retrieval accuracy established", "event_type": "project_update", "event_time": "2025-10-07", "summary": "The team has not established a numerical retrieval-accuracy result.", "participants": ["team"], "facts": ["No numerical retrieval-accuracy result has been established."], "outcome": null}
+    ],
+    "question": "What retrieval accuracy did the team achieve?",
+    "answerable": false,
+    "required_keywords": [],
+    "forbidden_keywords": ["92%", "85%", "0.9"],
+    "expected_evidence": ["accuracy"]
+  },
+  {
+    "id": "a6_general_knowledge",
+    "memories": [],
+    "question": "What is the capital of France?",
+    "answerable": true,
+    "required_keywords": ["paris"],
+    "forbidden_keywords": [],
+    "expected_evidence": []
+  },
+  {
+    "id": "a7_apply_preference",
+    "memories": [
+      {"title": "Communication preference: bullet points", "event_type": "preference", "event_time": "2026-10-01", "summary": "The user prefers concise bullet-point summaries.", "participants": ["user"], "facts": ["The user prefers concise bullet-point summaries."], "outcome": null},
+      {"title": "Mentor presentation on November 6, 2026", "event_type": "goal", "event_time": "2026-11-06", "summary": "The user will present the prototype to their mentor on November 6, 2026.", "participants": ["user", "mentor"], "facts": ["The prototype presentation to the mentor is on November 6, 2026."], "outcome": null}
+    ],
+    "question": "Using my preferred format, outline a short talk structure for the mentor session. Mark suggestions clearly.",
+    "answerable": true,
+    "required_keywords": ["mentor"],
+    "forbidden_keywords": [],
+    "expected_format": "bullets",
+    "expected_evidence": ["bullet"]
+  },
+  {
+    "id": "a8_changed_preference",
+    "memories": [
+      {"title": "Preference: bullet points", "event_type": "preference", "event_time": "2026-10-01", "summary": "The user previously preferred concise bullet points.", "participants": ["user"], "facts": ["The user previously preferred bullet points."], "outcome": null},
+      {"title": "Preference: tables", "event_type": "preference", "event_time": "2026-10-20", "summary": "The user currently prefers tables for summaries.", "participants": ["user"], "facts": ["The user currently prefers tables."], "outcome": null}
+    ],
+    "question": "How do I currently like summaries formatted?",
+    "answerable": true,
+    "required_keywords": ["table"],
+    "forbidden_keywords": [],
+    "expected_evidence": ["tables"]
+  },
+  {
+    "id": "a9_follow_up",
+    "memories": [
+      {"title": "Mira episode schema task", "event_type": "task", "event_time": "2025-10-03", "summary": "Mira owns the episode schema task and it is still open.", "participants": ["Mira"], "facts": ["Mira owns the episode schema task.", "The task is still open."], "outcome": null},
+      {"title": "Asha completed deletion tests", "event_type": "outcome", "event_time": "2025-10-07", "summary": "Asha completed the deletion tests on October 7, 2025.", "participants": ["Asha"], "facts": ["Asha completed the deletion tests."], "outcome": "Deletion tests completed."}
+    ],
+    "question": "What should I follow up on?",
+    "answerable": true,
+    "required_keywords": ["mira"],
+    "forbidden_keywords": [],
+    "expected_evidence": ["mira"]
+  },
+  {
+    "id": "a10_postgres_decision",
+    "memories": [
+      {"title": "Decision: SQLite chosen, Postgres rejected", "event_type": "decision", "event_time": "2025-10-03", "summary": "The team selected SQLite and rejected Postgres for the local prototype.", "participants": ["team"], "facts": ["SQLite was selected for the local prototype.", "Postgres was rejected."], "outcome": null}
+    ],
+    "question": "What did we decide about Postgres?",
+    "answerable": true,
+    "required_keywords": ["postgres"],
+    "forbidden_keywords": ["chose postgres", "selected postgres", "decided to use postgres"],
+    "expected_evidence": ["sqlite"]
+  }
+]

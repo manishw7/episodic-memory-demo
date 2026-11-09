@@ -1,0 +1,34 @@
+[
+  {
+    "id": "c1_memory_off_control",
+    "kind": "memory_off",
+    "memory": {"title": "Project Zephyr review", "event_type": "goal", "event_time": "2027-03-03", "summary": "The Project Zephyr review is scheduled for March 3, 2027.", "participants": ["team"], "facts": ["The Project Zephyr review is scheduled for March 3, 2027."], "outcome": null},
+    "question": "When is the Project Zephyr review?",
+    "required_keyword": "march 3"
+  },
+  {
+    "id": "c2_counterfactual",
+    "kind": "counterfactual",
+    "old_memory": {"title": "Orion launch date", "event_type": "goal", "event_time": "2027-05-05", "summary": "The Orion launch is scheduled for May 5, 2027.", "participants": ["team"], "facts": ["The Orion launch is scheduled for May 5, 2027."], "outcome": null},
+    "new_memory": {"title": "Orion launch date", "event_type": "goal", "event_time": "2027-05-19", "summary": "The Orion launch is scheduled for May 19, 2027.", "participants": ["team"], "facts": ["The Orion launch is scheduled for May 19, 2027."], "outcome": null},
+    "question": "When is the Orion launch?",
+    "old_keyword": "may 5",
+    "new_keyword": "may 19"
+  },
+  {
+    "id": "c3_evidence_deletion",
+    "kind": "deletion",
+    "memory": {"title": "Zephyr review date", "event_type": "goal", "event_time": "2027-03-03", "summary": "The Zephyr review is scheduled for March 3, 2027.", "participants": ["team"], "facts": ["The Zephyr review is scheduled for March 3, 2027."], "outcome": null},
+    "question": "When is the Zephyr review?",
+    "required_keyword": "march 3"
+  },
+  {
+    "id": "c4_hard_negative_injection",
+    "kind": "hard_negative",
+    "gold": {"title": "Zephyr review date", "event_type": "goal", "event_time": "2027-03-03", "summary": "The Zephyr review is scheduled for March 3, 2027.", "participants": ["team"], "facts": ["The Zephyr review is scheduled for March 3, 2027."], "outcome": null},
+    "negative": {"title": "Zephyr review date", "event_type": "goal", "event_time": "2027-03-17", "summary": "The Zephyr review is scheduled for March 17, 2027.", "participants": ["team"], "facts": ["The Zephyr review is scheduled for March 17, 2027."], "outcome": null},
+    "question": "When is the Zephyr review?",
+    "gold_keyword": "march 3",
+    "negative_keyword": "march 17"
+  }
+]

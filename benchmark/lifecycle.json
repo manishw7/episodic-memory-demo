@@ -1,0 +1,239 @@
+[
+  {
+    "id": "l1_assign_then_complete",
+    "sessions": [
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Mira will finish the episode schema by October 18, 2025.",
+            "created_at": "2025-10-03T09:00:00+00:00"
+          }
+        ],
+        "expect": [
+          {
+            "keywords": [
+              "mira",
+              "schema"
+            ],
+            "event_type": "task",
+            "expected_outcome": null
+          }
+        ]
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Mira completed the episode schema on October 18, 2025.",
+            "created_at": "2025-10-18T17:00:00+00:00"
+          }
+        ],
+        "expect": [
+          {
+            "keywords": [
+              "mira",
+              "schema"
+            ],
+            "event_type": "outcome",
+            "expected_outcome": "completed"
+          }
+        ]
+      }
+    ],
+    "expect_state_changes": 1
+  },
+  {
+    "id": "l2_cancelled_task",
+    "sessions": [
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Ravi will run the retrieval experiment next week.",
+            "created_at": "2025-10-03T10:00:00+00:00"
+          }
+        ],
+        "expect": [
+          {
+            "keywords": [
+              "ravi",
+              "retrieval"
+            ],
+            "event_type": "task",
+            "expected_outcome": null
+          }
+        ]
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "We cancelled the retrieval experiment. Ravi will not run it.",
+            "created_at": "2025-10-05T10:00:00+00:00"
+          }
+        ],
+        "expect": [
+          {
+            "keywords": [
+              "cancel",
+              "retrieval"
+            ],
+            "expected_outcome": "cancel"
+          }
+        ]
+      }
+    ],
+    "expect_state_changes": 1
+  },
+  {
+    "id": "l3_preference_change",
+    "sessions": [
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "I prefer concise bullet points.",
+            "created_at": "2026-10-01T09:00:00+00:00"
+          }
+        ],
+        "expect": [
+          {
+            "keywords": [
+              "bullet"
+            ],
+            "event_type": "preference"
+          }
+        ]
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "I now prefer tables instead of bullet points.",
+            "created_at": "2026-10-20T09:00:00+00:00"
+          }
+        ],
+        "expect": [
+          {
+            "keywords": [
+              "table"
+            ],
+            "event_type": "preference"
+          }
+        ]
+      }
+    ],
+    "expect_state_changes": 1
+  },
+  {
+    "id": "l4_duplicate_across_sessions",
+    "sessions": [
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "I prefer concise bullet points.",
+            "created_at": "2026-10-01T09:00:00+00:00"
+          }
+        ],
+        "expect": [
+          {
+            "keywords": [
+              "bullet"
+            ],
+            "event_type": "preference"
+          }
+        ]
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Remember that I prefer concise bullet points.",
+            "created_at": "2026-10-02T09:00:00+00:00"
+          }
+        ],
+        "expect": [
+          {
+            "keywords": [
+              "bullet"
+            ],
+            "event_type": "preference"
+          }
+        ]
+      }
+    ],
+    "expect_state_changes": 0
+  },
+  {
+    "id": "l5_date_change",
+    "sessions": [
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "The mentor presentation is on November 6, 2026.",
+            "created_at": "2026-10-01T09:00:00+00:00"
+          }
+        ],
+        "expect": [
+          {
+            "keywords": [
+              "november 6",
+              "mentor"
+            ],
+            "event_type": "goal"
+          }
+        ]
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Change the mentor presentation to November 13, 2026.",
+            "created_at": "2026-10-02T09:00:00+00:00"
+          }
+        ],
+        "expect": [
+          {
+            "keywords": [
+              "november 13",
+              "mentor"
+            ],
+            "event_type": "goal"
+          }
+        ]
+      }
+    ],
+    "expect_state_changes": 1
+  },
+  {
+    "id": "l6_persistence_after_restart",
+    "sessions": [
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "The team decided to use SQLite for storage because the prototype is offline and single-user.",
+            "created_at": "2025-10-03T09:00:00+00:00"
+          }
+        ],
+        "expect": [
+          {
+            "keywords": [
+              "sqlite",
+              "storage"
+            ],
+            "event_type": "decision"
+          }
+        ]
+      }
+    ],
+    "restart_query": "Why did we choose SQLite?",
+    "restart_keywords": [
+      "sqlite"
+    ],
+    "expect_state_changes": 0
+  }
+]

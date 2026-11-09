@@ -1,0 +1,358 @@
+[
+  {
+    "id": "f1_decision_vs_hypothetical",
+    "messages": [
+      {
+        "role": "user",
+        "content": "We might use Postgres later, but for the prototype we decided on SQLite because it is offline and single-user. Mira will check query performance by Friday.",
+        "created_at": "2026-10-01T09:00:00+00:00"
+      },
+      {
+        "role": "assistant",
+        "content": "Noted.",
+        "created_at": "2026-10-01T09:01:00+00:00"
+      }
+    ],
+    "gold_memories": [
+      {
+        "keywords": [
+          "sqlite",
+          "prototype"
+        ],
+        "event_type": "decision"
+      },
+      {
+        "keywords": [
+          "mira",
+          "performance"
+        ],
+        "event_type": "task"
+      }
+    ],
+    "must_not_store": [
+      "might use postgres",
+      "postgres later"
+    ]
+  },
+  {
+    "id": "f2_greeting_and_smalltalk",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hey! How's it going? The weather is nice today.",
+        "created_at": "2026-10-01T10:00:00+00:00"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi! I'm doing well, thanks.",
+        "created_at": "2026-10-01T10:01:00+00:00"
+      }
+    ],
+    "gold_memories": [],
+    "must_not_store": [
+      "weather",
+      "how's it going",
+      "doing well"
+    ]
+  },
+  {
+    "id": "f3_assistant_suggestion_not_accepted",
+    "messages": [
+      {
+        "role": "user",
+        "content": "We need a storage layer for the demo.",
+        "created_at": "2026-10-02T09:00:00+00:00"
+      },
+      {
+        "role": "assistant",
+        "content": "You could use Postgres or Redis.",
+        "created_at": "2026-10-02T09:01:00+00:00"
+      },
+      {
+        "role": "user",
+        "content": "We'll stay with SQLite.",
+        "created_at": "2026-10-02T09:02:00+00:00"
+      }
+    ],
+    "gold_memories": [
+      {
+        "keywords": [
+          "sqlite",
+          "storage"
+        ],
+        "event_type": "decision"
+      }
+    ],
+    "must_not_store": [
+      "could use postgres",
+      "could use redis"
+    ]
+  },
+  {
+    "id": "f4_multiple_events_one_message",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Mira will finish the episode schema by October 18, 2025. Asha completed the deletion tests on October 7, 2025. Ravi's retrieval test is blocked because it used the chat model for embeddings.",
+        "created_at": "2025-10-07T14:00:00+00:00"
+      }
+    ],
+    "gold_memories": [
+      {
+        "keywords": [
+          "mira",
+          "schema"
+        ],
+        "event_type": "task"
+      },
+      {
+        "keywords": [
+          "asha",
+          "deletion"
+        ],
+        "event_type": "outcome"
+      },
+      {
+        "keywords": [
+          "ravi",
+          "blocked"
+        ],
+        "event_type": "project_update"
+      }
+    ],
+    "must_not_store": []
+  },
+  {
+    "id": "f5_repeated_preference",
+    "messages": [
+      {
+        "role": "user",
+        "content": "I prefer concise bullet points.",
+        "created_at": "2026-10-03T09:00:00+00:00"
+      },
+      {
+        "role": "assistant",
+        "content": "Got it.",
+        "created_at": "2026-10-03T09:01:00+00:00"
+      },
+      {
+        "role": "user",
+        "content": "Also, remember that I like concise bullet points.",
+        "created_at": "2026-10-03T09:02:00+00:00"
+      }
+    ],
+    "gold_memories": [
+      {
+        "keywords": [
+          "bullet",
+          "prefer"
+        ],
+        "event_type": "preference"
+      }
+    ],
+    "must_not_store": []
+  },
+  {
+    "id": "f6_vague_status",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Things are going well. The project is progressing.",
+        "created_at": "2026-10-03T11:00:00+00:00"
+      }
+    ],
+    "gold_memories": [],
+    "must_not_store": [
+      "things are going well",
+      "project is progressing"
+    ]
+  },
+  {
+    "id": "f7_unknown_date",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ravi will run the retrieval test at some point, but no date is set.",
+        "created_at": "2026-10-04T09:00:00+00:00"
+      }
+    ],
+    "gold_memories": [
+      {
+        "keywords": [
+          "ravi",
+          "retrieval"
+        ],
+        "event_type": "task"
+      }
+    ],
+    "must_not_store": []
+  },
+  {
+    "id": "f8_goal_and_preference",
+    "messages": [
+      {
+        "role": "user",
+        "content": "I want to present the prototype to my mentor on November 6, 2026. I prefer tables.",
+        "created_at": "2026-10-04T12:00:00+00:00"
+      }
+    ],
+    "gold_memories": [
+      {
+        "keywords": [
+          "mentor",
+          "november 6"
+        ],
+        "event_type": "goal"
+      },
+      {
+        "keywords": [
+          "table",
+          "prefer"
+        ],
+        "event_type": "preference"
+      }
+    ],
+    "must_not_store": []
+  },
+  {
+    "id": "f9_negation",
+    "messages": [
+      {
+        "role": "user",
+        "content": "We did not choose Postgres. The team selected SQLite for the local prototype.",
+        "created_at": "2026-10-05T09:00:00+00:00"
+      }
+    ],
+    "gold_memories": [
+      {
+        "keywords": [
+          "sqlite",
+          "prototype"
+        ],
+        "event_type": "decision"
+      }
+    ],
+    "must_not_store": [
+      "chose postgres",
+      "selected postgres",
+      "decided on postgres"
+    ]
+  },
+  {
+    "id": "f10_mixed_smalltalk_and_event",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Thanks for the update. The weather is nice today. Also, the team decided to use SQLite for storage.",
+        "created_at": "2026-10-05T10:00:00+00:00"
+      }
+    ],
+    "gold_memories": [
+      {
+        "keywords": [
+          "sqlite",
+          "storage"
+        ],
+        "event_type": "decision"
+      }
+    ],
+    "must_not_store": [
+      "weather",
+      "thanks for the update"
+    ]
+  },
+  {
+    "id": "f11_skip_suggestion",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Should we add authentication?",
+        "created_at": "2026-10-06T09:00:00+00:00"
+      },
+      {
+        "role": "assistant",
+        "content": "You should add OAuth and a user table.",
+        "created_at": "2026-10-06T09:01:00+00:00"
+      },
+      {
+        "role": "user",
+        "content": "No, this is a single-user local demo. We will skip authentication.",
+        "created_at": "2026-10-06T09:02:00+00:00"
+      }
+    ],
+    "gold_memories": [
+      {
+        "keywords": [
+          "skip",
+          "authentication"
+        ],
+        "event_type": "decision"
+      }
+    ],
+    "must_not_store": [
+      "add oauth",
+      "user table"
+    ]
+  },
+  {
+    "id": "f12_assignment_with_due_date",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Asha owns the deletion tests and must finish them by October 7, 2025.",
+        "created_at": "2025-10-01T09:00:00+00:00"
+      }
+    ],
+    "gold_memories": [
+      {
+        "keywords": [
+          "asha",
+          "deletion"
+        ],
+        "event_type": "task"
+      }
+    ],
+    "must_not_store": []
+  },
+  {
+    "id": "f13_profile_bundle_split",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Here is everything about me. I am studying BSc CSIT at Tribhuvan University and I am in my sixth semester. I use a MacBook Pro with an M1 Pro chip and 16 GB of unified memory. I am allergic to avocado and get a fever if I eat it.",
+        "created_at": "2026-10-28T09:00:00+00:00"
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks, noted.",
+        "created_at": "2026-10-28T09:01:00+00:00"
+      }
+    ],
+    "gold_memories": [
+      {
+        "keywords": [
+          "bsc csit"
+        ],
+        "event_type": "preference"
+      },
+      {
+        "keywords": [
+          "macbook",
+          "m1 pro"
+        ],
+        "event_type": "preference"
+      },
+      {
+        "keywords": [
+          "avocado"
+        ],
+        "event_type": "preference"
+      }
+    ],
+    "must_not_store": [
+      "background summary",
+      "profile summary",
+      "all about me"
+    ]
+  }
+]

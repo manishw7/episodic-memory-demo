@@ -1,0 +1,746 @@
+[
+  {
+    "id": "r1_status_decoy",
+    "query": "What is Mira still working on?",
+    "gold": [
+      {
+        "title": "Mira API schema task",
+        "event_type": "task",
+        "event_time": "2026-10-20",
+        "summary": "Mira is still working on the API schema. The task is open and has not been completed.",
+        "participants": [
+          "Mira"
+        ],
+        "facts": [
+          "Mira is still working on the API schema.",
+          "The API schema task is open.",
+          "The API schema task is not completed."
+        ],
+        "outcome": null,
+        "keywords": [
+          "mira",
+          "api schema"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Mira episode schema completed",
+        "event_type": "outcome",
+        "event_time": "2025-10-18",
+        "summary": "Mira completed the episode schema on October 18, 2025.",
+        "participants": [
+          "Mira"
+        ],
+        "facts": [
+          "Mira completed the episode schema.",
+          "The episode schema task is completed."
+        ],
+        "outcome": "Episode schema completed.",
+        "reason": "status decoy: completed version of a similar Mira task"
+      },
+      {
+        "title": "Mira onboarding completed",
+        "event_type": "outcome",
+        "event_time": "2025-09-01",
+        "summary": "Mira completed onboarding on September 1, 2025.",
+        "participants": [
+          "Mira"
+        ],
+        "facts": [
+          "Mira completed onboarding."
+        ],
+        "outcome": "Onboarding completed.",
+        "reason": "same person, different completed task"
+      }
+    ]
+  },
+  {
+    "id": "r2_same_entity_deadline",
+    "query": "When is Mira's episode schema due?",
+    "gold": [
+      {
+        "title": "Mira episode schema deadline",
+        "event_type": "task",
+        "event_time": "2025-10-18",
+        "summary": "Mira's episode schema is due on October 18, 2025.",
+        "participants": [
+          "Mira"
+        ],
+        "facts": [
+          "Mira's episode schema is due October 18, 2025."
+        ],
+        "outcome": null,
+        "keywords": [
+          "mira",
+          "episode schema",
+          "october 18"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Mira API schema deadline",
+        "event_type": "task",
+        "event_time": "2026-11-01",
+        "summary": "Mira's API schema is due on November 1, 2026.",
+        "participants": [
+          "Mira"
+        ],
+        "facts": [
+          "Mira's API schema is due November 1, 2026."
+        ],
+        "outcome": null,
+        "reason": "same person and word schema, different project"
+      },
+      {
+        "title": "Mira onboarding deadline",
+        "event_type": "task",
+        "event_time": "2025-09-01",
+        "summary": "Mira's onboarding is due on September 1, 2025.",
+        "participants": [
+          "Mira"
+        ],
+        "facts": [
+          "Mira's onboarding is due September 1, 2025."
+        ],
+        "outcome": null,
+        "reason": "same person, different task"
+      }
+    ]
+  },
+  {
+    "id": "r3_temporal_preference",
+    "query": "How do I currently like summaries formatted?",
+    "gold": [
+      {
+        "title": "Preference: tables",
+        "event_type": "preference",
+        "event_time": "2026-10-20",
+        "summary": "The user currently prefers tables for summaries.",
+        "participants": [
+          "user"
+        ],
+        "facts": [
+          "The user currently prefers tables."
+        ],
+        "outcome": null,
+        "keywords": [
+          "table",
+          "currently"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Preference: bullet points",
+        "event_type": "preference",
+        "event_time": "2026-10-01",
+        "summary": "The user previously preferred concise bullet points.",
+        "participants": [
+          "user"
+        ],
+        "facts": [
+          "The user previously preferred bullet points."
+        ],
+        "outcome": null,
+        "reason": "temporal decoy: old preference"
+      },
+      {
+        "title": "Preference: long prose",
+        "event_type": "preference",
+        "event_time": "2026-09-01",
+        "summary": "The user previously preferred long prose explanations.",
+        "participants": [
+          "user"
+        ],
+        "facts": [
+          "The user previously preferred long prose."
+        ],
+        "outcome": null,
+        "reason": "old preference, same topic"
+      }
+    ]
+  },
+  {
+    "id": "r4_sqlite_decision",
+    "query": "Why did we choose SQLite?",
+    "gold": [
+      {
+        "title": "Decision: SQLite for the prototype",
+        "event_type": "decision",
+        "event_time": "2025-10-03",
+        "summary": "The team chose SQLite because the prototype is offline and single-user.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "SQLite was chosen for the offline single-user prototype.",
+          "SQLite fits the offline constraint."
+        ],
+        "outcome": null,
+        "keywords": [
+          "sqlite",
+          "offline"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Decision: Postgres for cloud",
+        "event_type": "decision",
+        "event_time": "2026-01-10",
+        "summary": "The team chose Postgres for a cloud deployment.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "Postgres was chosen for a cloud deployment."
+        ],
+        "outcome": null,
+        "reason": "same topic, different database"
+      },
+      {
+        "title": "Task: migrate SQLite to Postgres",
+        "event_type": "task",
+        "event_time": "2026-02-01",
+        "summary": "The team planned to migrate SQLite data to Postgres.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "A migration from SQLite to Postgres was planned."
+        ],
+        "outcome": null,
+        "reason": "mentions SQLite but is not the decision"
+      }
+    ]
+  },
+  {
+    "id": "r5_blocker",
+    "query": "What is blocking Ravi's retrieval experiment?",
+    "gold": [
+      {
+        "title": "Ravi's retrieval experiment blocked",
+        "event_type": "project_update",
+        "event_time": "2025-10-07",
+        "summary": "Ravi's retrieval experiment is blocked because it used the chat model for embeddings instead of embeddinggemma.",
+        "participants": [
+          "Ravi"
+        ],
+        "facts": [
+          "Ravi's retrieval experiment is blocked.",
+          "The test used the chat model for embeddings instead of embeddinggemma."
+        ],
+        "outcome": null,
+        "keywords": [
+          "ravi",
+          "chat model",
+          "embeddinggemma"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Ravi's retrieval experiment completed",
+        "event_type": "outcome",
+        "event_time": "2025-10-20",
+        "summary": "Ravi completed the retrieval experiment.",
+        "participants": [
+          "Ravi"
+        ],
+        "facts": [
+          "Ravi completed the retrieval experiment."
+        ],
+        "outcome": "Retrieval experiment completed.",
+        "reason": "status decoy: completed version"
+      },
+      {
+        "title": "Asha's deletion tests blocked",
+        "event_type": "project_update",
+        "event_time": "2025-10-07",
+        "summary": "Asha's deletion tests are blocked by a database issue.",
+        "participants": [
+          "Asha"
+        ],
+        "facts": [
+          "Asha's deletion tests are blocked."
+        ],
+        "outcome": null,
+        "reason": "same status, different person"
+      }
+    ]
+  },
+  {
+    "id": "r6_near_duplicate",
+    "query": "What did Asha finish?",
+    "gold": [
+      {
+        "title": "Asha completed deletion tests",
+        "event_type": "outcome",
+        "event_time": "2025-10-07",
+        "summary": "Asha completed the deletion tests on October 7, 2025.",
+        "participants": [
+          "Asha"
+        ],
+        "facts": [
+          "Asha completed the deletion tests on October 7, 2025."
+        ],
+        "outcome": "Deletion tests completed.",
+        "keywords": [
+          "asha",
+          "deletion",
+          "october 7"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Asha started deletion tests",
+        "event_type": "task",
+        "event_time": "2025-10-01",
+        "summary": "Asha started the deletion tests on October 1, 2025.",
+        "participants": [
+          "Asha"
+        ],
+        "facts": [
+          "Asha started the deletion tests."
+        ],
+        "outcome": null,
+        "reason": "same task, wrong status"
+      },
+      {
+        "title": "Asha completed onboarding",
+        "event_type": "outcome",
+        "event_time": "2025-10-07",
+        "summary": "Asha completed onboarding on October 7, 2025.",
+        "participants": [
+          "Asha"
+        ],
+        "facts": [
+          "Asha completed onboarding."
+        ],
+        "outcome": "Onboarding completed.",
+        "reason": "same person and date, different task"
+      }
+    ]
+  },
+  {
+    "id": "r7_ownership",
+    "query": "Who owns the episode schema?",
+    "gold": [
+      {
+        "title": "Mira owns the episode schema",
+        "event_type": "task",
+        "event_time": "2025-10-03",
+        "summary": "Mira owns the episode schema task.",
+        "participants": [
+          "Mira"
+        ],
+        "facts": [
+          "Mira owns the episode schema task."
+        ],
+        "outcome": null,
+        "keywords": [
+          "mira",
+          "episode schema",
+          "owns"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Ravi owns the retrieval experiment",
+        "event_type": "task",
+        "event_time": "2025-10-03",
+        "summary": "Ravi owns the retrieval experiment.",
+        "participants": [
+          "Ravi"
+        ],
+        "facts": [
+          "Ravi owns the retrieval experiment."
+        ],
+        "outcome": null,
+        "reason": "same ownership wording, different person"
+      },
+      {
+        "title": "Asha owns the deletion tests",
+        "event_type": "task",
+        "event_time": "2025-10-03",
+        "summary": "Asha owns the deletion tests.",
+        "participants": [
+          "Asha"
+        ],
+        "facts": [
+          "Asha owns the deletion tests."
+        ],
+        "outcome": null,
+        "reason": "same ownership wording, different person"
+      }
+    ]
+  },
+  {
+    "id": "r8_project_scope",
+    "query": "What is the current project scope?",
+    "gold": [
+      {
+        "title": "Project scope: local single-user prototype",
+        "event_type": "project_update",
+        "event_time": "2025-10-03",
+        "summary": "The project is a local, offline-first, single-user prototype.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "The project is local and offline-first.",
+          "The prototype is for a single user."
+        ],
+        "outcome": null,
+        "keywords": [
+          "local",
+          "single-user",
+          "offline"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Project scope: multi-user cloud service",
+        "event_type": "project_update",
+        "event_time": "2026-05-01",
+        "summary": "The project is a multi-user cloud service.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "The project is multi-user and runs in the cloud."
+        ],
+        "outcome": null,
+        "reason": "same wording, opposite scope"
+      },
+      {
+        "title": "Project update: demo scheduled",
+        "event_type": "project_update",
+        "event_time": "2026-10-01",
+        "summary": "The team scheduled a demo for November 6, 2026.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "A demo is scheduled for November 6, 2026."
+        ],
+        "outcome": null,
+        "reason": "same project, different status update"
+      }
+    ]
+  },
+  {
+    "id": "r9_presentation_date",
+    "query": "When is my mentor presentation?",
+    "gold": [
+      {
+        "title": "Mentor presentation on November 6, 2026",
+        "event_type": "goal",
+        "event_time": "2026-11-06",
+        "summary": "The user will present the prototype to their mentor on November 6, 2026.",
+        "participants": [
+          "user",
+          "mentor"
+        ],
+        "facts": [
+          "The prototype presentation to the mentor is on November 6, 2026."
+        ],
+        "outcome": null,
+        "keywords": [
+          "mentor",
+          "november 6",
+          "2026"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Mentor coffee chat on October 2",
+        "event_type": "event",
+        "event_time": "2026-10-02",
+        "summary": "The user has a coffee chat with their mentor on October 2, 2026.",
+        "participants": [
+          "user",
+          "mentor"
+        ],
+        "facts": [
+          "The mentor coffee chat is on October 2, 2026."
+        ],
+        "outcome": null,
+        "reason": "same person, different meeting"
+      },
+      {
+        "title": "Team demo on November 6",
+        "event_type": "event",
+        "event_time": "2026-11-06",
+        "summary": "The team demo is on November 6, 2026.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "The team demo is on November 6, 2026."
+        ],
+        "outcome": null,
+        "reason": "same date, different audience"
+      }
+    ]
+  },
+  {
+    "id": "r10_negation",
+    "query": "What did we decide about Postgres?",
+    "gold": [
+      {
+        "title": "Decision: SQLite chosen, Postgres rejected",
+        "event_type": "decision",
+        "event_time": "2025-10-03",
+        "summary": "The team selected SQLite and rejected Postgres for the local prototype.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "SQLite was selected for the local prototype.",
+          "Postgres was rejected for the local prototype."
+        ],
+        "outcome": null,
+        "keywords": [
+          "sqlite",
+          "postgres",
+          "rejected"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Decision: Postgres chosen for the prototype",
+        "event_type": "decision",
+        "event_time": "2025-09-01",
+        "summary": "The team chose Postgres for the prototype.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "Postgres was chosen for the prototype."
+        ],
+        "outcome": null,
+        "reason": "negation decoy: says the opposite"
+      },
+      {
+        "title": "Task: evaluate Postgres for storage",
+        "event_type": "task",
+        "event_time": "2025-09-15",
+        "summary": "The team planned to evaluate Postgres for storage.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "The team planned to evaluate Postgres."
+        ],
+        "outcome": null,
+        "reason": "mentions Postgres but is not the decision"
+      }
+    ]
+  },
+  {
+    "id": "r11_multi_hop",
+    "query": "What should Ravi fix before rerunning the retrieval experiment?",
+    "gold": [
+      {
+        "title": "Ravi's retrieval experiment blocked by chat-model embeddings",
+        "event_type": "project_update",
+        "event_time": "2025-10-07",
+        "summary": "Ravi's retrieval experiment is blocked because it used the chat model for embeddings.",
+        "participants": [
+          "Ravi"
+        ],
+        "facts": [
+          "The retrieval experiment used the chat model for embeddings.",
+          "The experiment is blocked."
+        ],
+        "outcome": null,
+        "keywords": [
+          "ravi",
+          "chat model",
+          "embeddings"
+        ]
+      },
+      {
+        "title": "Decision: use embeddinggemma for embeddings",
+        "event_type": "decision",
+        "event_time": "2025-10-08",
+        "summary": "The team decided to use embeddinggemma for embeddings instead of the chat model.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "The team decided to use embeddinggemma for embeddings."
+        ],
+        "outcome": null,
+        "keywords": [
+          "embeddinggemma",
+          "embeddings"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Ravi's retrieval experiment completed",
+        "event_type": "outcome",
+        "event_time": "2025-10-20",
+        "summary": "Ravi completed the retrieval experiment.",
+        "participants": [
+          "Ravi"
+        ],
+        "facts": [
+          "Ravi completed the retrieval experiment."
+        ],
+        "outcome": "Completed.",
+        "reason": "status decoy"
+      },
+      {
+        "title": "Decision: use chat model for embeddings",
+        "event_type": "decision",
+        "event_time": "2025-10-01",
+        "summary": "The team decided to use the chat model for embeddings.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "The team decided to use the chat model for embeddings."
+        ],
+        "outcome": null,
+        "reason": "negation decoy: the wrong choice"
+      }
+    ]
+  },
+  {
+    "id": "r12_distractor_personal",
+    "query": "When is my mentor presentation?",
+    "gold": [
+      {
+        "title": "Mentor presentation on November 6, 2026",
+        "event_type": "goal",
+        "event_time": "2026-11-06",
+        "summary": "The user will present the prototype to their mentor on November 6, 2026.",
+        "participants": [
+          "user",
+          "mentor"
+        ],
+        "facts": [
+          "The prototype presentation to the mentor is on November 6, 2026."
+        ],
+        "outcome": null,
+        "keywords": [
+          "mentor",
+          "november 6"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "Dentist appointment on November 6",
+        "event_type": "event",
+        "event_time": "2026-11-06",
+        "summary": "The user has a dentist appointment on November 6, 2026.",
+        "participants": [
+          "user"
+        ],
+        "facts": [
+          "The dentist appointment is on November 6, 2026."
+        ],
+        "outcome": null,
+        "reason": "same date, unrelated personal event"
+      },
+      {
+        "title": "Team demo on November 6",
+        "event_type": "event",
+        "event_time": "2026-11-06",
+        "summary": "The team demo is on November 6, 2026.",
+        "participants": [
+          "team"
+        ],
+        "facts": [
+          "The team demo is on November 6, 2026."
+        ],
+        "outcome": null,
+        "reason": "same date, different audience"
+      }
+    ]
+  },
+  {
+    "id": "r13_buried_attribute",
+    "query": "What laptop do I use?",
+    "gold": [
+      {
+        "title": "User hardware setup",
+        "event_type": "preference",
+        "event_time": "2026-10-28",
+        "summary": "The user uses a MacBook Pro with an M1 Pro chip and 16 GB of unified memory.",
+        "participants": [
+          "User"
+        ],
+        "facts": [
+          "User uses a MacBook Pro.",
+          "The laptop has an M1 Pro chip.",
+          "The laptop has 16 GB of unified memory."
+        ],
+        "outcome": null,
+        "keywords": [
+          "macbook",
+          "m1 pro"
+        ]
+      }
+    ],
+    "hard_negatives": [
+      {
+        "title": "User academic background and study habits",
+        "event_type": "preference",
+        "event_time": "2026-10-28",
+        "summary": "The user studies BSc CSIT in the sixth semester and tends to study at the last minute.",
+        "participants": [
+          "User"
+        ],
+        "facts": [
+          "User studies BSc CSIT.",
+          "User is in the sixth semester."
+        ],
+        "outcome": null,
+        "reason": "same profile source, different topic"
+      },
+      {
+        "title": "User requested email draft to gather laptop details",
+        "event_type": "task",
+        "event_time": "2026-10-28",
+        "summary": "The user asked for an email draft asking Nabin which laptop specifications are needed.",
+        "participants": [
+          "User",
+          "Nabin"
+        ],
+        "facts": [
+          "User asked for an email draft about laptop specifications."
+        ],
+        "outcome": null,
+        "reason": "mentions laptops but is not a fact about the user's device"
+      },
+      {
+        "title": "User technical interests and project goals",
+        "event_type": "goal",
+        "event_time": "2026-10-28",
+        "summary": "The user is interested in AI agents and episodic memory and wants practical projects.",
+        "participants": [
+          "User"
+        ],
+        "facts": [
+          "User is interested in AI agents.",
+          "User wants practical projects."
+        ],
+        "outcome": null,
+        "reason": "same profile source, different topic"
+      }
+    ]
+  }
+]
