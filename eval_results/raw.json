@@ -1,0 +1,923 @@
+{
+  "settings": {
+    "ollama_base_url": "http://127.0.0.1:11434",
+    "chat_model": "qwen3.5:9b",
+    "embed_model": "embeddinggemma",
+    "database_path": "./memory.db",
+    "top_k": 4,
+    "min_similarity": 0.3
+  },
+  "results": {
+    "formation": {
+      "rows": [
+        {
+          "id": "f1_decision_vs_hypothetical",
+          "extracted": 2,
+          "gold": 2,
+          "matched": 2,
+          "precision": 1.0,
+          "recall": 1.0,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 2,
+          "titles": [
+            "Database choice for prototype",
+            "Query performance check assignment"
+          ],
+          "errors": []
+        },
+        {
+          "id": "f2_greeting_and_smalltalk",
+          "extracted": 0,
+          "gold": 0,
+          "matched": 0,
+          "precision": 1.0,
+          "recall": null,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 0,
+          "titles": [],
+          "errors": []
+        },
+        {
+          "id": "f3_assistant_suggestion_not_accepted",
+          "extracted": 1,
+          "gold": 1,
+          "matched": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 1,
+          "titles": [
+            "Storage layer decision"
+          ],
+          "errors": []
+        },
+        {
+          "id": "f4_multiple_events_one_message",
+          "extracted": 3,
+          "gold": 3,
+          "matched": 3,
+          "precision": 1.0,
+          "recall": 1.0,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 3,
+          "titles": [
+            "Mira's episode schema deadline",
+            "Asha's deletion tests completion",
+            "Ravi's retrieval test blocker"
+          ],
+          "errors": []
+        },
+        {
+          "id": "f5_repeated_preference",
+          "extracted": 1,
+          "gold": 1,
+          "matched": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 1,
+          "titles": [
+            "User prefers concise bullet points"
+          ],
+          "errors": []
+        },
+        {
+          "id": "f6_vague_status",
+          "extracted": 0,
+          "gold": 0,
+          "matched": 0,
+          "precision": 1.0,
+          "recall": null,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 0,
+          "titles": [],
+          "errors": []
+        },
+        {
+          "id": "f7_unknown_date",
+          "extracted": 1,
+          "gold": 1,
+          "matched": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 1,
+          "titles": [
+            "Ravi to run retrieval test"
+          ],
+          "errors": []
+        },
+        {
+          "id": "f8_goal_and_preference",
+          "extracted": 2,
+          "gold": 2,
+          "matched": 2,
+          "precision": 1.0,
+          "recall": 1.0,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 2,
+          "titles": [
+            "Prototype presentation goal",
+            "Preference for tables"
+          ],
+          "errors": []
+        },
+        {
+          "id": "f9_negation",
+          "extracted": 1,
+          "gold": 1,
+          "matched": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 1,
+          "titles": [
+            "Database selection for local prototype"
+          ],
+          "errors": []
+        },
+        {
+          "id": "f10_mixed_smalltalk_and_event",
+          "extracted": 1,
+          "gold": 1,
+          "matched": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 1,
+          "titles": [
+            "Team storage technology decision"
+          ],
+          "errors": [
+            "Episode ep_8d8a6bb75f51 rejected: small talk (User preference: weather)."
+          ]
+        },
+        {
+          "id": "f11_skip_suggestion",
+          "extracted": 1,
+          "gold": 1,
+          "matched": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 1,
+          "titles": [
+            "Skip authentication for local demo"
+          ],
+          "errors": []
+        },
+        {
+          "id": "f12_assignment_with_due_date",
+          "extracted": 1,
+          "gold": 1,
+          "matched": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 1,
+          "titles": [
+            "Asha assigned deletion tests"
+          ],
+          "errors": []
+        },
+        {
+          "id": "f13_profile_bundle_split",
+          "extracted": 3,
+          "gold": 3,
+          "matched": 3,
+          "precision": 1.0,
+          "recall": 1.0,
+          "duplicates": 0,
+          "noise_violations": [],
+          "provenance_ok": true,
+          "metadata_correct": 3,
+          "titles": [
+            "Education status",
+            "Device specifications",
+            "Allergy to avocado"
+          ],
+          "errors": []
+        }
+      ],
+      "summary": {
+        "cases": 13,
+        "extracted": 17,
+        "gold": 17,
+        "matched": 17,
+        "precision": 1.0,
+        "recall": 1.0,
+        "noise_checks": 19,
+        "noise_violations": 0,
+        "noise_rejection": 1.0,
+        "metadata_accuracy": 1.0,
+        "exact_count_rate": 1.0,
+        "duplicate_pairs": 0,
+        "duplicate_rate": 0.0,
+        "false_memory_rate": 0.0,
+        "provenance_ok": true
+      }
+    },
+    "retrieval": {
+      "rows": [
+        {
+          "id": "r1_status_decoy",
+          "query": "What is Mira still working on?",
+          "top1": true,
+          "mrr": 1.0,
+          "recall4": 1.0,
+          "precision4": 0.3333333333333333,
+          "hard_negative_rejection": 1.0,
+          "rank_margin": 0.09351569708026575,
+          "first_gold_rank": 1,
+          "ranked_titles": [
+            "Mira API schema task",
+            "Mira episode schema completed",
+            "Mira onboarding completed"
+          ]
+        },
+        {
+          "id": "r2_same_entity_deadline",
+          "query": "When is Mira's episode schema due?",
+          "top1": true,
+          "mrr": 1.0,
+          "recall4": 1.0,
+          "precision4": 0.3333333333333333,
+          "hard_negative_rejection": 1.0,
+          "rank_margin": 0.10054623497459503,
+          "first_gold_rank": 1,
+          "ranked_titles": [
+            "Mira episode schema deadline",
+            "Mira API schema deadline",
+            "Mira onboarding deadline"
+          ]
+        },
+        {
+          "id": "r3_temporal_preference",
+          "query": "How do I currently like summaries formatted?",
+          "top1": true,
+          "mrr": 1.0,
+          "recall4": 1.0,
+          "precision4": 0.3333333333333333,
+          "hard_negative_rejection": 1.0,
+          "rank_margin": 0.07623183894207292,
+          "first_gold_rank": 1,
+          "ranked_titles": [
+            "Preference: tables",
+            "Preference: bullet points",
+            "Preference: long prose"
+          ]
+        },
+        {
+          "id": "r4_sqlite_decision",
+          "query": "Why did we choose SQLite?",
+          "top1": true,
+          "mrr": 1.0,
+          "recall4": 1.0,
+          "precision4": 0.3333333333333333,
+          "hard_negative_rejection": 1.0,
+          "rank_margin": 0.15935705962585012,
+          "first_gold_rank": 1,
+          "ranked_titles": [
+            "Decision: SQLite for the prototype",
+            "Task: migrate SQLite to Postgres",
+            "Decision: Postgres for cloud"
+          ]
+        },
+        {
+          "id": "r5_blocker",
+          "query": "What is blocking Ravi's retrieval experiment?",
+          "top1": true,
+          "mrr": 1.0,
+          "recall4": 1.0,
+          "precision4": 0.3333333333333333,
+          "hard_negative_rejection": 1.0,
+          "rank_margin": 0.06070995252463629,
+          "first_gold_rank": 1,
+          "ranked_titles": [
+            "Ravi's retrieval experiment blocked",
+            "Ravi's retrieval experiment completed",
+            "Asha's deletion tests blocked"
+          ]
+        },
+        {
+          "id": "r6_near_duplicate",
+          "query": "What did Asha finish?",
+          "top1": false,
+          "mrr": 0.5,
+          "recall4": 1.0,
+          "precision4": 0.3333333333333333,
+          "hard_negative_rejection": 0.5,
+          "rank_margin": -0.004502649192352659,
+          "first_gold_rank": 2,
+          "ranked_titles": [
+            "Asha completed onboarding",
+            "Asha completed deletion tests",
+            "Asha started deletion tests"
+          ]
+        },
+        {
+          "id": "r7_ownership",
+          "query": "Who owns the episode schema?",
+          "top1": true,
+          "mrr": 1.0,
+          "recall4": 1.0,
+          "precision4": 0.3333333333333333,
+          "hard_negative_rejection": 1.0,
+          "rank_margin": 0.1834699663883852,
+          "first_gold_rank": 1,
+          "ranked_titles": [
+            "Mira owns the episode schema",
+            "Ravi owns the retrieval experiment",
+            "Asha owns the deletion tests"
+          ]
+        },
+        {
+          "id": "r8_project_scope",
+          "query": "What is the current project scope?",
+          "top1": false,
+          "mrr": 0.5,
+          "recall4": 1.0,
+          "precision4": 0.3333333333333333,
+          "hard_negative_rejection": 0.5,
+          "rank_margin": -0.0705322962649505,
+          "first_gold_rank": 2,
+          "ranked_titles": [
+            "Project scope: multi-user cloud service",
+            "Project scope: local single-user prototype",
+            "Project update: demo scheduled"
+          ]
+        },
+        {
+          "id": "r9_presentation_date",
+          "query": "When is my mentor presentation?",
+          "top1": true,
+          "mrr": 1.0,
+          "recall4": 1.0,
+          "precision4": 0.3333333333333333,
+          "hard_negative_rejection": 1.0,
+          "rank_margin": 0.1459645741622133,
+          "first_gold_rank": 1,
+          "ranked_titles": [
+            "Mentor presentation on November 6, 2026",
+            "Mentor coffee chat on October 2",
+            "Team demo on November 6"
+          ]
+        },
+        {
+          "id": "r10_negation",
+          "query": "What did we decide about Postgres?",
+          "top1": false,
+          "mrr": 0.5,
+          "recall4": 1.0,
+          "precision4": 0.3333333333333333,
+          "hard_negative_rejection": 0.5,
+          "rank_margin": -0.011056307610323834,
+          "first_gold_rank": 2,
+          "ranked_titles": [
+            "Decision: Postgres chosen for the prototype",
+            "Decision: SQLite chosen, Postgres rejected",
+            "Task: evaluate Postgres for storage"
+          ]
+        },
+        {
+          "id": "r11_multi_hop",
+          "query": "What should Ravi fix before rerunning the retrieval experiment?",
+          "top1": false,
+          "mrr": 0.5,
+          "recall4": 1.0,
+          "precision4": 0.5,
+          "hard_negative_rejection": 0.5,
+          "rank_margin": -0.042686499123618216,
+          "first_gold_rank": 2,
+          "ranked_titles": [
+            "Ravi's retrieval experiment completed",
+            "Ravi's retrieval experiment blocked by chat-model embeddings",
+            "Decision: use embeddinggemma for embeddings",
+            "Decision: use chat model for embeddings"
+          ]
+        },
+        {
+          "id": "r12_distractor_personal",
+          "query": "When is my mentor presentation?",
+          "top1": true,
+          "mrr": 1.0,
+          "recall4": 1.0,
+          "precision4": 0.3333333333333333,
+          "hard_negative_rejection": 1.0,
+          "rank_margin": 0.2643161834725775,
+          "first_gold_rank": 1,
+          "ranked_titles": [
+            "Mentor presentation on November 6, 2026",
+            "Dentist appointment on November 6",
+            "Team demo on November 6"
+          ]
+        },
+        {
+          "id": "r13_buried_attribute",
+          "query": "What laptop do I use?",
+          "top1": true,
+          "mrr": 1.0,
+          "recall4": 1.0,
+          "precision4": 0.25,
+          "hard_negative_rejection": 1.0,
+          "rank_margin": 0.14517164204511052,
+          "first_gold_rank": 1,
+          "ranked_titles": [
+            "User hardware setup",
+            "User academic background and study habits",
+            "User requested email draft to gather laptop details",
+            "User technical interests and project goals"
+          ]
+        }
+      ],
+      "summary": {
+        "cases": 13,
+        "top1": 0.6923076923076923,
+        "mrr": 0.8461538461538461,
+        "recall4": 1.0,
+        "precision4": 0.3397435897435897,
+        "hard_negative_rejection": 0.8461538461538461,
+        "rank_margin": 0.08465426130957396,
+        "auroc": 0.7592592592592593,
+        "calibration": [
+          {
+            "band": "< 0.00",
+            "n": 0,
+            "relevant": 0,
+            "precision": null
+          },
+          {
+            "band": "0.00-0.20",
+            "n": 0,
+            "relevant": 0,
+            "precision": null
+          },
+          {
+            "band": "0.20-0.40",
+            "n": 11,
+            "relevant": 1,
+            "precision": 0.09090909090909091
+          },
+          {
+            "band": "0.40-0.60",
+            "n": 21,
+            "relevant": 7,
+            "precision": 0.3333333333333333
+          },
+          {
+            "band": "0.60-0.80",
+            "n": 8,
+            "relevant": 5,
+            "precision": 0.625
+          },
+          {
+            "band": "0.80-1.00",
+            "n": 1,
+            "relevant": 1,
+            "precision": 1.0
+          }
+        ]
+      }
+    },
+    "lifecycle": {
+      "rows": [
+        {
+          "id": "l1_assign_then_complete",
+          "session_checks": [
+            {
+              "session": 1,
+              "keywords": [
+                "mira",
+                "schema"
+              ],
+              "fact_ok": true,
+              "outcome_ok": true,
+              "type_ok": true
+            },
+            {
+              "session": 2,
+              "keywords": [
+                "mira",
+                "schema"
+              ],
+              "fact_ok": true,
+              "outcome_ok": true,
+              "type_ok": true
+            }
+          ],
+          "episodes": 2,
+          "all_episodes": 2,
+          "state_changes": 1,
+          "expected_state_changes": 1,
+          "state_ok": true,
+          "duplicate_pairs": 0,
+          "persistence_ok": null
+        },
+        {
+          "id": "l2_cancelled_task",
+          "session_checks": [
+            {
+              "session": 1,
+              "keywords": [
+                "ravi",
+                "retrieval"
+              ],
+              "fact_ok": true,
+              "outcome_ok": true,
+              "type_ok": true
+            },
+            {
+              "session": 2,
+              "keywords": [
+                "cancel",
+                "retrieval"
+              ],
+              "fact_ok": true,
+              "outcome_ok": true,
+              "type_ok": null
+            }
+          ],
+          "episodes": 2,
+          "all_episodes": 2,
+          "state_changes": 1,
+          "expected_state_changes": 1,
+          "state_ok": true,
+          "duplicate_pairs": 0,
+          "persistence_ok": null
+        },
+        {
+          "id": "l3_preference_change",
+          "session_checks": [
+            {
+              "session": 1,
+              "keywords": [
+                "bullet"
+              ],
+              "fact_ok": true,
+              "outcome_ok": null,
+              "type_ok": true
+            },
+            {
+              "session": 2,
+              "keywords": [
+                "table"
+              ],
+              "fact_ok": true,
+              "outcome_ok": null,
+              "type_ok": true
+            }
+          ],
+          "episodes": 1,
+          "all_episodes": 2,
+          "state_changes": 1,
+          "expected_state_changes": 1,
+          "state_ok": true,
+          "duplicate_pairs": 0,
+          "persistence_ok": null
+        },
+        {
+          "id": "l4_duplicate_across_sessions",
+          "session_checks": [
+            {
+              "session": 1,
+              "keywords": [
+                "bullet"
+              ],
+              "fact_ok": true,
+              "outcome_ok": null,
+              "type_ok": true
+            },
+            {
+              "session": 2,
+              "keywords": [
+                "bullet"
+              ],
+              "fact_ok": true,
+              "outcome_ok": null,
+              "type_ok": true
+            }
+          ],
+          "episodes": 1,
+          "all_episodes": 1,
+          "state_changes": 0,
+          "expected_state_changes": 0,
+          "state_ok": true,
+          "duplicate_pairs": 0,
+          "persistence_ok": null
+        },
+        {
+          "id": "l5_date_change",
+          "session_checks": [
+            {
+              "session": 1,
+              "keywords": [
+                "november 6",
+                "mentor"
+              ],
+              "fact_ok": true,
+              "outcome_ok": null,
+              "type_ok": true
+            },
+            {
+              "session": 2,
+              "keywords": [
+                "november 13",
+                "mentor"
+              ],
+              "fact_ok": true,
+              "outcome_ok": null,
+              "type_ok": false
+            }
+          ],
+          "episodes": 1,
+          "all_episodes": 2,
+          "state_changes": 1,
+          "expected_state_changes": 1,
+          "state_ok": true,
+          "duplicate_pairs": 0,
+          "persistence_ok": null
+        },
+        {
+          "id": "l6_persistence_after_restart",
+          "session_checks": [
+            {
+              "session": 1,
+              "keywords": [
+                "sqlite",
+                "storage"
+              ],
+              "fact_ok": true,
+              "outcome_ok": null,
+              "type_ok": true
+            }
+          ],
+          "episodes": 1,
+          "all_episodes": 1,
+          "state_changes": 0,
+          "expected_state_changes": 0,
+          "state_ok": true,
+          "duplicate_pairs": 0,
+          "persistence_ok": true
+        }
+      ],
+      "summary": {
+        "cases": 6,
+        "fact_checks": 11,
+        "fact_passes": 11,
+        "fact_recall": 1.0,
+        "outcome_checks": 4,
+        "outcome_passes": 4,
+        "outcome_accuracy": 1.0,
+        "type_checks": 10,
+        "type_passes": 9,
+        "type_accuracy": 0.9,
+        "duplicate_pairs": 0,
+        "state_checks": 6,
+        "state_passes": 6,
+        "state_accuracy": 1.0,
+        "persistence_checks": 1,
+        "persistence_passes": 1
+      }
+    },
+    "answering": {
+      "rows": [
+        {
+          "id": "a1_presentation_date",
+          "question": "When is my mentor presentation?",
+          "answer": "Your mentor presentation is scheduled for **November 6, 2026**.",
+          "passed": true,
+          "required_ok": true,
+          "forbidden_hit": false,
+          "abstained": false,
+          "format_ok": null,
+          "evidence_ok": true,
+          "searched": true,
+          "latency_ms": 4836
+        },
+        {
+          "id": "a2_format_preference",
+          "question": "How do I like information formatted?",
+          "answer": "You prefer concise bullet-point summaries.",
+          "passed": true,
+          "required_ok": true,
+          "forbidden_hit": false,
+          "abstained": false,
+          "format_ok": null,
+          "evidence_ok": true,
+          "searched": true,
+          "latency_ms": 3905
+        },
+        {
+          "id": "a3_blocker_reason",
+          "question": "Why was the retrieval experiment blocked?",
+          "answer": "The retrieval experiment was blocked because it used the chat model for embeddings instead of embeddinggemma.",
+          "passed": true,
+          "required_ok": true,
+          "forbidden_hit": false,
+          "abstained": false,
+          "format_ok": null,
+          "evidence_ok": true,
+          "searched": true,
+          "latency_ms": 4971
+        },
+        {
+          "id": "a4_deletion_testing",
+          "question": "Who completed deletion testing, and when?",
+          "answer": "Asha completed the deletion testing on October 7, 2025.",
+          "passed": true,
+          "required_ok": true,
+          "forbidden_hit": false,
+          "abstained": false,
+          "format_ok": null,
+          "evidence_ok": true,
+          "searched": true,
+          "latency_ms": 4476
+        },
+        {
+          "id": "a5_missing_accuracy",
+          "question": "What retrieval accuracy did the team achieve?",
+          "answer": "The available records do not establish a specific numerical retrieval accuracy achieved by the team. The only related record indicates that no numerical retrieval-accuracy result has been established as of October 7, 2025.",
+          "passed": true,
+          "required_ok": true,
+          "forbidden_hit": false,
+          "abstained": true,
+          "format_ok": null,
+          "evidence_ok": true,
+          "searched": true,
+          "latency_ms": 5786
+        },
+        {
+          "id": "a6_general_knowledge",
+          "question": "What is the capital of France?",
+          "answer": "The capital of France is Paris.",
+          "passed": true,
+          "required_ok": true,
+          "forbidden_hit": false,
+          "abstained": false,
+          "format_ok": null,
+          "evidence_ok": null,
+          "searched": false,
+          "latency_ms": 3048
+        },
+        {
+          "id": "a7_apply_preference",
+          "question": "Using my preferred format, outline a short talk structure for the mentor session. Mark suggestions clearly.",
+          "answer": "Based on your preference for concise bullet-point summaries, here is an outline for your mentor presentation scheduled for November 6, 2026:\n\n*   **Introduction**\n    *   Briefly introduce yourself and the prototype's core purpose.\n    *   State the specific goals you hope to achieve during this session.\n*   **Prototype Demonstration**\n    *   Walk through the key features of the prototype.\n    *   Highlight the most significant technical or functional breakthroughs.\n*   **Challenges & Solutions**\n    *   List the primary obstacles encountered during development.\n    *   Summarize the strategies used to overcome them.\n*   **Next Steps & Feedback Request**\n    *   Outline the immediate roadmap for post-presentation work.\n    *   Clearly specify the type of feedback or guidance you are seeking from your mentor.\n\n*Suggestion: Keep each section under 5 minutes to maintain a tight schedule.*",
+          "passed": true,
+          "required_ok": true,
+          "forbidden_hit": false,
+          "abstained": false,
+          "format_ok": true,
+          "evidence_ok": true,
+          "searched": true,
+          "latency_ms": 14919
+        },
+        {
+          "id": "a8_changed_preference",
+          "question": "How do I currently like summaries formatted?",
+          "answer": "You currently prefer tables for summaries. This preference was recorded on October 20, 2026. Previously, you had preferred concise bullet points (recorded on October 1, 2026), but the most recent record indicates a shift to tables.",
+          "passed": true,
+          "required_ok": true,
+          "forbidden_hit": false,
+          "abstained": false,
+          "format_ok": null,
+          "evidence_ok": true,
+          "searched": true,
+          "latency_ms": 6896
+        },
+        {
+          "id": "a9_follow_up",
+          "question": "What should I follow up on?",
+          "answer": "Based on the available records, there is one open item to follow up on:\n\n*   **Mira's episode schema task**: This task is currently marked as \"still open.\" You may want to check its status or progress.\n\nThe record regarding Asha indicates that deletion tests were completed on October 7, 2025, so that item appears resolved.",
+          "passed": true,
+          "required_ok": true,
+          "forbidden_hit": false,
+          "abstained": false,
+          "format_ok": null,
+          "evidence_ok": true,
+          "searched": true,
+          "latency_ms": 8094
+        },
+        {
+          "id": "a10_postgres_decision",
+          "question": "What did we decide about Postgres?",
+          "answer": "We decided to reject Postgres for the local prototype, selecting SQLite instead.",
+          "passed": true,
+          "required_ok": true,
+          "forbidden_hit": false,
+          "abstained": false,
+          "format_ok": null,
+          "evidence_ok": true,
+          "searched": true,
+          "latency_ms": 4503
+        }
+      ],
+      "summary": {
+        "cases": 10,
+        "answerable_accuracy": 1.0,
+        "unanswerable_abstention": 1.0,
+        "false_abstentions": 0,
+        "format_accuracy": 1.0,
+        "evidence_accuracy": 1.0,
+        "searched": 9,
+        "avg_latency_ms": 6143.4
+      }
+    },
+    "causal": {
+      "rows": [
+        {
+          "id": "c1_memory_off_control",
+          "kind": "memory_off",
+          "passed": true,
+          "detail": "memory_on=True memory_off_fails=True"
+        },
+        {
+          "id": "c2_counterfactual",
+          "kind": "counterfactual",
+          "passed": true,
+          "detail": "follows_new=True old_absent=True"
+        },
+        {
+          "id": "c3_evidence_deletion",
+          "kind": "deletion",
+          "passed": true,
+          "detail": "first_ok=True second_abstains=True"
+        },
+        {
+          "id": "c4_hard_negative_injection",
+          "kind": "hard_negative",
+          "passed": false,
+          "detail": "gold_ok=True negative_absent=False"
+        }
+      ],
+      "summary": {
+        "cases": 4,
+        "passes": 3,
+        "pass_rate": 0.75
+      }
+    },
+    "stress": {
+      "rows": [
+        {
+          "id": "s1_restart_persistence",
+          "kind": "restart",
+          "passed": true,
+          "detail": "matches_after_restart=1"
+        },
+        {
+          "id": "s2_deletion",
+          "kind": "deletion",
+          "passed": true,
+          "detail": "matches_after_delete=0"
+        },
+        {
+          "id": "s3_prompt_injection",
+          "kind": "injection",
+          "passed": true,
+          "detail": "required_ok=True injection_blocked=True"
+        },
+        {
+          "id": "s4_distractor_flood",
+          "kind": "flood",
+          "passed": true,
+          "detail": "top1=Project Atlas deadline"
+        },
+        {
+          "id": "s5_empty_archive",
+          "kind": "empty",
+          "passed": true,
+          "detail": "abstained=True"
+        }
+      ],
+      "summary": {
+        "cases": 5,
+        "passes": 5,
+        "pass_rate": 1.0
+      }
+    }
+  }
+}
