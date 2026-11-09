@@ -2470,7 +2470,7 @@ Verified against `README.md` and the code.
 ## 17.1 Set up the environment
 
 ```bash
-git clone <this-repo-url> episodic-memory-demo
+git clone https://github.com/manishw7/episodic-memory-demo.git
 cd episodic-memory-demo
 python3 -m venv .venv
 source .venv/bin/activate

@@ -90,7 +90,7 @@ ollama pull embeddinggemma
 ollama list                  # both names should appear
 
 # 3. Project
-git clone <this-repo-url> episodic-memory-demo
+git clone https://github.com/manishw7/episodic-memory-demo.git
 cd episodic-memory-demo
 python3 -m venv .venv
 source .venv/bin/activate
