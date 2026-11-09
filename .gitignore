@@ -1,0 +1,16 @@
+# Environments and secrets
+.venv/
+.env
+
+# Local database and backups (never commit user conversations)
+*.db
+*.db.bak
+*.bak
+
+# Python / tooling caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# macOS
+.DS_Store
