@@ -2533,6 +2533,16 @@ streamlit run app.py
 
 Open the URL it prints, normally <http://localhost:8501>.
 
+If you do not want to repeat the environment steps by hand, use the scripts in the repository root:
+
+```bash
+./start.sh      # venv, dependencies, Ollama, models, then the app
+./stop.sh       # stop the app, unload the models, quit Ollama
+```
+
+They print what they are doing, log to `.run/logs/`, and are safe to run twice. `./stop.sh
+--keep-ollama` leaves the Ollama server running if you use it for other work.
+
 ## 17.7 Run the example conversation
 
 In the sidebar, click **Load demo conversation & extract memories**.

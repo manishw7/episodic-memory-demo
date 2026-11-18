@@ -116,6 +116,39 @@ Configuration lives in `.env` (all values have defaults):
 
 `memory.db` is created automatically and is git-ignored. To start over, stop the app and delete it.
 
+### 5.1 Start and stop with one command
+
+If you do not want to remember the steps above, use the two scripts in the repository root:
+
+```bash
+./start.sh      # checks Python, installs deps, starts Ollama, checks models, starts the app
+./stop.sh       # stops the app, unloads the models, frees the port
+```
+
+`start.sh` is safe to run twice. It skips whatever is already running:
+
+| Step | What it does |
+|---|---|
+| Environment | Creates `.venv` and installs `requirements.txt` only if needed. |
+| Config | Copies `.env.example` to `.env` if `.env` is missing. |
+| Ollama | Reuses a running server, otherwise starts `ollama serve` in the background. |
+| Models | Checks `qwen3.5:9b` and `embeddinggemma`; offers to download a missing one. |
+| App | Starts Streamlit on port 8501, waits until it answers, then opens your browser. |
+
+Logs go to `.run/logs/`. Useful flags:
+
+```bash
+./start.sh --no-browser        # do not open a tab
+./start.sh --status            # what is running right now
+STREAMLIT_PORT=8502 ./start.sh # use a different port
+./stop.sh --keep-ollama        # leave the Ollama server running
+./stop.sh --clean              # also delete logs and saved state
+```
+
+`stop.sh` unloads both models so their memory is released immediately, then quits Ollama — including
+the macOS desktop app, because the app would otherwise restart its own server. If you use Ollama for
+other projects, use `--keep-ollama` and only the app is stopped.
+
 ## 6. The five-minute demo
 
 This is the sequence to walk a reviewer through.

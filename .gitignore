@@ -7,6 +7,9 @@
 *.db.bak
 *.bak
 
+# Runtime state and logs from start.sh / stop.sh
+.run/
+
 # Python / tooling caches
 __pycache__/
 *.py[cod]
