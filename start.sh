@@ -3,6 +3,7 @@
 # Safe to run twice: it detects what is already running and only starts what is missing.
 #
 #   ./start.sh              start and open the app
+#   ./start.sh --demo       use the separate demo archive (demo.db), never memory.db
 #   ./start.sh --no-browser do not open a browser tab
 #   ./start.sh --status     show what is running, change nothing
 
@@ -28,12 +29,14 @@ die()  { printf '\n%sError:%s %s\n\n' "$R" "$N" "$*" >&2; exit 1; }
 
 OPEN_BROWSER=1
 ACTION=start
+DEMO=0
 for arg in "$@"; do
   case "$arg" in
+    --demo)       DEMO=1 ;;
     --no-browser) OPEN_BROWSER=0 ;;
     --status)     ACTION=status ;;
     -h|--help)
-      sed -n '2,7p' "$0" | sed 's/^# \{0,1\}//'
+      sed -n '2,8p' "$0" | sed 's/^# \{0,1\}//'
       exit 0 ;;
     *) die "Unknown option: $arg (try --help)" ;;
   esac
@@ -56,6 +59,21 @@ PORT="${STREAMLIT_PORT:-$(env_get STREAMLIT_PORT)}"
 PORT="${PORT:-8501}"
 APP_URL="http://localhost:$PORT"
 HEALTH_URL="http://127.0.0.1:$PORT/_stcore/health"
+
+# Which archive the app opens. --demo always uses the committed demo.db, so nothing done on
+# stage can touch memory.db.
+if [ "$DEMO" = 1 ]; then
+  DB_PATH="$ROOT/demo.db"
+  MODE_FLAG=" --demo"
+else
+  DB_PATH="${DATABASE_PATH:-$(env_get DATABASE_PATH)}"
+  DB_PATH="${DB_PATH:-./memory.db}"
+  case "$DB_PATH" in
+    /*) ;;
+    *)  DB_PATH="$ROOT/${DB_PATH#./}" ;;
+  esac
+  MODE_FLAG=""
+fi
 
 http_ok() { curl -fsS -m 3 -o /dev/null "$1" >/dev/null 2>&1; }
 
@@ -88,6 +106,15 @@ model_present() {  # name
 
 if [ "$ACTION" = status ]; then
   step "Status"
+  recorded_db="$(cat "$RUN_DIR/database" 2>/dev/null || true)"
+  if [ -n "$recorded_db" ]; then
+    case "$recorded_db" in
+      */demo.db) ok "Database: $recorded_db (demo)" ;;
+      *)         ok "Database: $recorded_db" ;;
+    esac
+  else
+    ok "Database on next start: $DB_PATH"
+  fi
   if ollama_running; then ok "Ollama is running at $BASE_URL"
   else warn "Ollama is not running at $BASE_URL"; fi
   if streamlit_running; then ok "App is running at $APP_URL"
@@ -98,6 +125,11 @@ fi
 printf '%sEpisodic Memory Agent%s\n' "$B" "$N"
 printf '  project: %s\n' "$ROOT"
 printf '  models:  %s + %s\n' "$CHAT_MODEL" "$EMBED_MODEL"
+if [ "$DEMO" = 1 ]; then
+  printf '  database: %s %s(demo - memory.db is never opened)%s\n' "$DB_PATH" "$Y" "$N"
+else
+  printf '  database: %s\n' "$DB_PATH"
+fi
 
 # --- 1. Python environment ------------------------------------------------------
 if [ ! -x "$ROOT/.venv/bin/python" ]; then
@@ -182,17 +214,36 @@ if [ "$missing" = 1 ]; then
   fi
 fi
 
-# --- 4. Streamlit ---------------------------------------------------------------
+# --- 4. Demo archive ------------------------------------------------------------
+if [ "$DEMO" = 1 ]; then
+  if [ -f "$DB_PATH" ]; then
+    ok "Demo archive present: $(basename "$DB_PATH")"
+  else
+    step "Building the demo archive (one-time, about two minutes)"
+    "$ROOT/.venv/bin/python" "$ROOT/scripts/build_demo_db.py" --db "$DB_PATH" \
+      || die "Could not build the demo archive. See the output above."
+    ok "Demo archive built"
+  fi
+fi
+
+# --- 5. Streamlit ---------------------------------------------------------------
 if streamlit_running; then
+  recorded_db="$(cat "$RUN_DIR/database" 2>/dev/null || true)"
+  if [ -n "$recorded_db" ] && [ "$recorded_db" != "$DB_PATH" ]; then
+    die "The app is already running against a different database:
+  running:   $recorded_db
+  requested: $DB_PATH
+  Run ./stop.sh first, then ./start.sh$MODE_FLAG."
+  fi
   ok "App already running at $APP_URL"
 else
   if lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
     die "Port $PORT is already used by another program.
-  Stop it, or choose another port:  STREAMLIT_PORT=8502 ./start.sh"
+  Stop it, or choose another port:  STREAMLIT_PORT=8502 ./start.sh$MODE_FLAG"
   fi
 
   step "Starting Streamlit"
-  nohup "$ROOT/.venv/bin/python" -m streamlit run "$ROOT/app.py" \
+  DATABASE_PATH="$DB_PATH" nohup "$ROOT/.venv/bin/python" -m streamlit run "$ROOT/app.py" \
     --server.port "$PORT" \
     --server.headless true \
     --browser.gatherUsageStats false \
@@ -208,8 +259,9 @@ else
   ok "App started (pid $(cat "$RUN_DIR/streamlit.pid"))"
 fi
 echo "$PORT" >"$RUN_DIR/port"
+echo "$DB_PATH" >"$RUN_DIR/database"
 
-# --- 5. Open the browser --------------------------------------------------------
+# --- 6. Open the browser --------------------------------------------------------
 if [ "$OPEN_BROWSER" = 1 ]; then
   if command -v open >/dev/null 2>&1; then
     open "$APP_URL" >/dev/null 2>&1 || true
@@ -218,13 +270,13 @@ if [ "$OPEN_BROWSER" = 1 ]; then
   fi
 fi
 
-cat <<EOF
-
-${G}${B}Ready.${N}
-  App:    $APP_URL
-  Ollama: $BASE_URL
-  Logs:   $LOG_DIR/{streamlit,ollama}.log
-  Stop:   ./stop.sh
-
-The first reply after a restart is slower: Ollama has to load the 9B model into memory.
-EOF
+printf '\n%s%sReady.%s\n' "$G" "$B" "$N"
+printf '  App:      %s\n' "$APP_URL"
+printf '  Database: %s\n' "$DB_PATH"
+if [ "$DEMO" = 1 ]; then
+  printf '  %sDemo mode: memory.db is never opened.%s\n' "$Y" "$N"
+fi
+printf '  Ollama:   %s\n' "$BASE_URL"
+printf '  Logs:     %s/{streamlit,ollama}.log\n' "$LOG_DIR"
+printf '  Stop:     ./stop.sh\n'
+printf '\nThe first reply after a restart is slower: Ollama has to load the 9B model into memory.\n'

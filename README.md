@@ -138,6 +138,7 @@ If you do not want to remember the steps above, use the two scripts in the repos
 Logs go to `.run/logs/`. Useful flags:
 
 ```bash
+./start.sh --demo              # use the synthetic demo archive (demo.db)
 ./start.sh --no-browser        # do not open a tab
 ./start.sh --status            # what is running right now
 STREAMLIT_PORT=8502 ./start.sh # use a different port
@@ -148,6 +149,30 @@ STREAMLIT_PORT=8502 ./start.sh # use a different port
 `stop.sh` unloads both models so their memory is released immediately, then quits Ollama — including
 the macOS desktop app, because the app would otherwise restart its own server. If you use Ollama for
 other projects, use `--keep-ollama` and only the app is stopped.
+
+### 5.2 Demo mode
+
+`./start.sh --demo` opens a separate, prebuilt archive instead of `memory.db`:
+
+```bash
+./start.sh --demo
+```
+
+- `demo.db` is a synthetic four-week story ("Project Atlas") produced once by the **real**
+  extraction pipeline: 17 memories, every lifecycle state, and three supersession chains.
+- It is committed, so the demo looks identical on every machine and starts instantly.
+- `memory.db` is never opened in this mode. You can delete memories on stage without risk.
+- If `demo.db` is missing, `start.sh --demo` rebuilds it before launching the app.
+
+Rebuild or inspect it by hand after changing `scripts/story.py`:
+
+```bash
+source .venv/bin/activate
+python scripts/build_demo_db.py --force   # rebuild from scratch (uses the models)
+python scripts/build_demo_db.py --check   # inspect an existing archive, no model calls
+```
+
+The builder refuses to write to `memory.db`.
 
 ## 6. The five-minute demo
 

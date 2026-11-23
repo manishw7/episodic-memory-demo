@@ -2,8 +2,11 @@
 .venv/
 .env
 
-# Local database and backups (never commit user conversations)
+# Local database and backups (never commit user conversations).
+# The synthetic demo archive is the one exception: it contains no real user data and is
+# committed so the demo looks identical on every machine.
 *.db
+!demo.db
 *.db.bak
 *.bak
 

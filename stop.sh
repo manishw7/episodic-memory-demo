@@ -181,6 +181,7 @@ if lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
 else
   ok "Port $PORT is free"
 fi
+rm -f "$RUN_DIR/database" "$RUN_DIR/port"
 
 # --- Optional cleanup -----------------------------------------------------------
 if [ "$CLEAN" = 1 ]; then
