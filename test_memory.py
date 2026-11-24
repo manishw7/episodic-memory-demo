@@ -12,6 +12,7 @@ from memory_engine import (
     EpisodeCandidate,
     MemoryEngine,
     Settings,
+    participants_overlap,
 )
 
 
@@ -329,6 +330,13 @@ def lifecycle_engine(tmp_path, responses):
     return make_engine(tmp_path, llm), llm
 
 
+def test_speaker_role_does_not_make_different_owners_the_same():
+    assert participants_overlap(["user", "Priya"], ["user", "Noah"]) is False
+    assert participants_overlap(["user", "Priya"], ["user", "Priya"]) is True
+    assert participants_overlap(["user"], ["Noah"]) is True
+    assert participants_overlap([], []) is True
+
+
 def test_changed_preference_supersedes_the_old_one(tmp_path):
     engine, llm = lifecycle_engine(tmp_path, [
         payload(episode_item("Preference: bullet points", "preference",
@@ -455,6 +463,29 @@ def test_consolidate_duplicates_keeps_the_richer_memory(tmp_path):
     active = engine.list_episodes()
     assert [episode["episode_id"] for episode in active] == ["ep_rich"]
     assert len(active[0]["facts"]) == 2
+
+
+def test_consolidate_does_not_merge_unrelated_same_titled_memories(tmp_path):
+    """Generic titles like "Project X definition" must not merge across projects."""
+    engine, _ = lifecycle_engine(tmp_path, [])
+    engine.add_message("c1", "user", "placeholder", "2026-10-01T09:00:00+00:00", "m1")
+    atlas = Episode(
+        **episode_item("Project Atlas definition", "project_update",
+                       "Atlas is a multi-user cloud service for shared notes.",
+                       ["Atlas is a multi-user cloud service for shared notes."]),
+        episode_id="ep_atlas", created_at="2026-10-05T09:00:00+00:00", source_conversation_id="c1",
+    )
+    beacon = Episode(
+        **episode_item("Project Beacon definition", "project_update",
+                       "Beacon is a public launch site for a river charity.",
+                       ["Beacon is a public launch site for a river charity."]),
+        episode_id="ep_beacon", created_at="2026-09-14T09:00:00+00:00", source_conversation_id="c2",
+    )
+    engine._insert_episode(atlas, [1.0, 0.0, 0.0, 0.0])
+    engine._insert_episode(beacon, [0.0, 1.0, 0.0, 0.0])
+
+    assert engine.consolidate_duplicates() == []
+    assert {episode["episode_id"] for episode in engine.list_episodes()} == {"ep_atlas", "ep_beacon"}
 
 
 def test_incremental_writer_processes_each_turn_once(tmp_path):

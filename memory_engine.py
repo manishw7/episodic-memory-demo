@@ -356,6 +356,9 @@ def cosine(a: np.ndarray, b: np.ndarray) -> float:
 # Lifecycle tuning. These are deliberately conservative: memory should be merged or replaced
 # only when the two episodes clearly describe the same thing.
 DUPLICATE_SIMILARITY = 0.90
+# A matching title alone can be generic ("Project X definition" recurs across projects), so when
+# the merge rests on the title rather than the embedding, the content must overlap too.
+TITLE_MERGE_OVERLAP = 0.35
 SUPERSEDE_SIMILARITY = 0.72
 
 # A fact must share at least this share of its content words with the messages it cites. This is a
@@ -527,11 +530,21 @@ def information_score(episode: Episode | dict[str, Any]) -> tuple[int, int, int]
     return (len(numbers_in(text)), len(facts), len(text))
 
 
+SPEAKER_ROLES = {"user", "assistant", "system"}
+
+
 def participants_overlap(left: list[str], right: list[str]) -> bool:
-    """Both empty or unknown participants are allowed; otherwise one name must match."""
-    if not left or not right:
+    """Both empty or unknown participants are allowed; otherwise one name must match.
+
+    Speaker roles ("user", "assistant") are not identities. The extractor sometimes adds
+    "user" to a task that belongs to a named person, which would otherwise make two
+    different people's tasks look like the same assignment.
+    """
+    left_names = {name.lower() for name in left if name.lower() not in SPEAKER_ROLES}
+    right_names = {name.lower() for name in right if name.lower() not in SPEAKER_ROLES}
+    if not left_names or not right_names:
         return True
-    return bool({name.lower() for name in left} & {name.lower() for name in right})
+    return bool(left_names & right_names)
 
 
 def _row_text(row: dict[str, Any]) -> str:
@@ -1075,7 +1088,9 @@ class MemoryEngine:
                     continue
                 score = cosine(np.asarray(first["embedding"]), np.asarray(second["embedding"]))
                 titles = jaccard(tokens(first["title"]), tokens(second["title"]))
-                if score >= DUPLICATE_SIMILARITY or titles >= 0.45:
+                content = jaccard(tokens(_row_text(first)), tokens(_row_text(second)))
+                if (score >= DUPLICATE_SIMILARITY
+                        or (titles >= 0.45 and content >= TITLE_MERGE_OVERLAP)):
                     keep, drop = ((first, second) if information_score(first) >= information_score(second)
                                   else (second, first))
                     combined = list(dict.fromkeys([*keep["facts"], *drop["facts"]]))
