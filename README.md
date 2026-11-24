@@ -158,10 +158,13 @@ other projects, use `--keep-ollama` and only the app is stopped.
 ./start.sh --demo
 ```
 
-- `demo.db` is a synthetic four-week story ("Project Atlas") produced once by the **real**
-  extraction pipeline: 17 memories, every lifecycle state, and three supersession chains.
+- `demo.db` is a synthetic eight-week story produced once by the **real** extraction pipeline:
+  50 memories across three interlocking projects — **Atlas** (18), **Beacon** (17) and **Cinder**
+  (15) — with shared people linking the clusters. Every lifecycle state appears, along with
+  supersession chains, completed tasks and cancellations.
 - It is committed, so the demo looks identical on every machine and starts instantly.
-- `memory.db` is never opened in this mode. You can delete memories on stage without risk.
+- `memory.db` is never opened in this mode. You can add, change and delete memories on stage
+  without risk.
 - If `demo.db` is missing, `start.sh --demo` rebuilds it before launching the app.
 
 Rebuild or inspect it by hand after changing `scripts/story.py`:
@@ -173,6 +176,44 @@ python scripts/build_demo_db.py --check   # inspect an existing archive, no mode
 ```
 
 The builder refuses to write to `memory.db`.
+
+### 5.3 The visual demo: three views
+
+The app has one switcher at the top with three views. Use `./start.sh --demo` for this walkthrough.
+
+| View | What it shows |
+|---|---|
+| **Chat** | The original assistant: routing, retrieval, evidence panels, and memory formation after every reply. |
+| **Memory Map** | A live constellation of every memory. Colour is the state (green active, blue completed, amber replaced, red cancelled); shape is the project. Coloured arrows are state changes, grey lines are similar memories, and purple diamonds are people who appear in more than one project. Hover any dot for its title, people and summary. |
+| **Time Machine** | A stepped area chart of the archive's history plus a date slider. Pick a day to see the exact counts, the changes made that day, and the full list of memories the system knew *then*. Presets jump to the Atlas scope change (12 Oct), launch day (6 Nov) and today. |
+
+The graph is not a stored diagram. It is derived at render time from episodes, lifecycle links,
+embedding similarity and shared people, so every write changes it immediately.
+
+**Live writes (Memory Map → sidebar → "Try a live write"):**
+
+- **Change a date** updates Priya's Atlas review date. The old memory flips from green to amber and
+  a coloured arrow appears between the two.
+- **Add a task** adds Noah's Beacon retro. A new square appears in the Beacon cluster and is linked
+  to Noah.
+- **Add an update** adds Cinder's nightly integrity check. A new triangle appears with links to the
+  existing Cinder memories.
+
+Each button runs the *real* extraction pipeline on a fresh conversation; nothing is hand-inserted.
+New memories get an amber halo for 30 seconds, the archive metrics and live feed update in place,
+and **Write your own memory** accepts any sentence. For custom writes, the project chosen only tags
+the new conversation so the dot gets the right shape.
+
+**Delete / manage:** at the bottom of the Memory Map, **Manage: delete a memory and watch the links
+disappear** lists the whole archive. Deleting an episode removes its dot and every line attached to
+it; the Time Machine still shows it in the history before the deletion date.
+
+**Deep links:** `http://localhost:8501/?view=Memory+Map` and
+`http://localhost:8501/?view=Time+Machine` open directly on a visual view, which is handy when
+setting up a projector. The switcher still works normally afterwards.
+
+To restore the pristine 50-memory archive after rehearsing, run `git checkout -- demo.db` with the
+app stopped, then start it again with `./start.sh --demo`.
 
 ## 6. The five-minute demo
 
@@ -246,11 +287,17 @@ Key constants, all in `memory_engine.py`:
 
 ```text
 episodic-memory-demo/
-├── app.py                  Streamlit UI: chat, sidebar archive, evidence panels
+├── app.py                  Streamlit UI: view switcher, chat, sidebar, evidence panels
+├── demo_views.py           Memory Map and Time Machine screens; live-write controls
+├── demo.db                 Committed 50-memory demo archive (used only by --demo)
 ├── memory_engine.py        All logic: prompts, schema, SQLite, extraction, retrieval, answering
 ├── evaluate.py             51-case benchmark runner and report writer
-├── test_memory.py          22 fast tests with a fake model (no Ollama needed)
-├── test_evaluate.py        5 tests for the scoring maths
+├── test_memory.py          Fast tests with a fake model (no Ollama needed)
+├── test_evaluate.py        Tests for the scoring maths
+├── scripts/
+│   ├── story.py            Fictional Atlas / Beacon / Cinder transcripts
+│   └── build_demo_db.py    Rebuilds demo.db through the real extractor
+├── start.sh / stop.sh      One-command start (with --demo) and stop
 ├── benchmark/              Six gold-annotated case files (formation, retrieval, lifecycle,
 │                           answering, causal, stress)
 ├── docs/
@@ -272,7 +319,7 @@ is remembered, edit `memory_engine.py`.
 
 ```bash
 # Fast tests: no Ollama, no network, under a second
-pytest -q                      # 27 passed
+pytest -q                      # 29 passed
 
 # Full benchmark: real models, temporary database, several minutes
 python evaluate.py
@@ -322,5 +369,6 @@ about these is part of the project.
 ## 12. Data and privacy
 
 All inference is local. The database, `.env`, and virtual environment are git-ignored, so cloning the
-repository gives you no conversations and no credentials. The demo data is fictional and lives in
-`DEMO_MESSAGES` in `memory_engine.py`. There are no API keys anywhere in the project.
+repository gives you no conversations and no credentials. The demo data is fictional: the chat seed
+lives in `DEMO_MESSAGES` in `memory_engine.py`, and the three-project archive in `scripts/story.py`.
+There are no API keys anywhere in the project.
