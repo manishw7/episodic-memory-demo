@@ -360,11 +360,18 @@ about these is part of the project.
 
 | Document | Read it when |
 |---|---|
-| [`docs/PROJECT_GUIDE.md`](docs/PROJECT_GUIDE.md) | You are new and want the full beginner walkthrough (19 chapters). |
-| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | You want the design, data flow, and tradeoffs in one sitting. |
-| [`docs/BENCHMARK_GUIDE.md`](docs/BENCHMARK_GUIDE.md) | You want to understand or extend the metrics. |
-| [`docs/RESULTS.md`](docs/RESULTS.md) | You want the recorded numbers and what they do and do not prove. |
-| [`docs/AUDIT.md`](docs/AUDIT.md) | You want the technical defects and where they live. |
+| [`docs/OVERVIEW.md`](docs/OVERVIEW.md) | Start here: what the project is, top to bottom, in plain language. |
+| [`docs/WORKING_MECHANISM.md`](docs/WORKING_MECHANISM.md) | Complete mechanism from start to finish. |
+| [`docs/HANDOFF.md`](docs/HANDOFF.md) | Master handoff: status, what changed, how to continue, improvements. |
+| [`docs/DEMO_AND_VIEWS.md`](docs/DEMO_AND_VIEWS.md) | Memory Map, Time Machine, live writes, demo flow. |
+| [`docs/DEVELOPMENT_HISTORY.md`](docs/DEVELOPMENT_HISTORY.md) | Chronological record of all changes. |
+| [`docs/IMPROVEMENTS.md`](docs/IMPROVEMENTS.md) | Future work, prioritised. |
+| [`docs/OPERATIONS.md`](docs/OPERATIONS.md) | Run, demo, restore, troubleshoot. |
+| [`docs/PROJECT_GUIDE.md`](docs/PROJECT_GUIDE.md) | Full beginner walkthrough (19 chapters). |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Design, data flow, tradeoffs. |
+| [`docs/BENCHMARK_GUIDE.md`](docs/BENCHMARK_GUIDE.md) | Every metric explained. |
+| [`docs/RESULTS.md`](docs/RESULTS.md) | Recorded numbers and caveats. |
+| [`docs/AUDIT.md`](docs/AUDIT.md) | Technical defects and where they live. |
 
 ## 12. Data and privacy
 
